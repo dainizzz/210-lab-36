@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <limits>
 #include "StringBinaryTree.h"
 
 using namespace std;
@@ -27,18 +28,53 @@ int main() {
 	StringBinaryTree tree;
 	ifstream infile;
 	string temp;
+	int choice;
+	bool displayMenu = true;
 
-	infile.open("codes.txt");
-	if (infile.good()) {
-		while (infile >> temp) {
-			tree.insertNode(temp);
+	// cout << "Loading initial record data..." << endl;
+	//
+	// infile.open("codes.txt");
+	// if (infile.good()) {
+	// 	while (infile >> temp) {
+	// 		tree.insertNode(temp);
+	// 	}
+	// } else
+	// 	cout << "Error opening file." << endl;
+	//
+	// cout << "Displaying initial record data..." << endl;
+	// tree.displayInOrder();
+	// cout << endl << endl;
+
+	while (displayMenu) {
+		choice = menu();
+		switch (choice) {
+			case 1:
+				// ADD
+				break;
+			case 2:
+				// DELETE
+				break;
+			case 3:
+				// SEARCH
+				break;
+			case 4:
+				// MODIFY
+				break;
+			case 5: {
+				tree.displayInOrder();
+				break;
+			}
+			case 6: {
+				displayMenu = false;
+			}
+			// Default case will not occur since the menu() function validates user input
+			default:
+				break;
 		}
-	} else
-		cout << "Error opening file." << endl;
+	}
 
-	tree.displayInOrder();
 
-    return 0;
+	return 0;
 }
 
 void testBinaryTree() {
@@ -74,8 +110,10 @@ int menu() {
 	cout << "4. Modify a record" << endl;
 	cout << "5. Display all records" << endl;
 	cout << "6. Exit" << endl;
-	while (!(cin >> choice)) {
-		cout << "Invalid input. Please enter a number." << endl;
+	while (!(cin >> choice) || choice < 1 || choice > 6) {
+		cout << "Invalid input. Please enter a number between 1 and 6." << endl;
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
 
 	return choice;
