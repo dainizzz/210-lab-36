@@ -2,6 +2,8 @@
 #ifndef INTBINARYTREE_H
 #define INTBINARYTREE_H
 
+//TODO: Edit this class so the value is instead a string
+
 // The IntBinaryTree class manages a binary tree of integers.
 class IntBinaryTree {
 private:

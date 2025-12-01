@@ -6,7 +6,6 @@
 using namespace std;
 
 /* Milestones (Remove when done)
- * 1. Project is set up and running using the provided files.
  * 2. Code modification from int to strings is complete, and your code exercises this for testing.
  * 3. Your code successfully creates a BST from the records and outputs it using the method of your choosing.
  * 4. Your code's menu is functional.
