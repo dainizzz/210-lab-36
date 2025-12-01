@@ -2,16 +2,41 @@
 // IDE used: CLion
 
 #include <iostream>
+#include <fstream>
 #include "StringBinaryTree.h"
+
 using namespace std;
 
 /* Milestones (Remove when done)
- * 3. Your code successfully creates a BST from the records and outputs it using the method of your choosing.
  * 4. Your code's menu is functional.
 */
 
+// testBinaryTree() tests the StringBinaryTree class by creating a new object of that class and
+// calling some of its methods.
+// arguments: none
+// returns: nothing
+void testBinaryTree();
+
 int main() {
-    StringBinaryTree tree;
+	StringBinaryTree tree;
+	ifstream infile;
+	string temp;
+
+	infile.open("codes.txt");
+	if (infile.good()) {
+		while (infile >> temp) {
+			tree.insertNode(temp);
+		}
+	} else
+		cout << "Error opening file." << endl;
+
+	tree.displayInOrder();
+
+    return 0;
+}
+
+void testBinaryTree() {
+	StringBinaryTree tree;
 
 	cout << "Inserting nodes into tree..." << endl;
 	tree.insertNode("dragonfruit");
@@ -29,8 +54,6 @@ int main() {
 	cout << endl;
 
 	cout << "Displaying the updated tree..." << endl;
-	tree.displayPreOrder();
+	tree.displayInOrder();
 	cout << endl;
-
-    return 0;
 }
