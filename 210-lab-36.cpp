@@ -24,6 +24,29 @@ void testBinaryTree();
 // returns: an int value representing the user's menu choice
 int menu();
 
+// addRecord() prompts the user for a value, creates a record, and adds a new record to the StringBinaryTree object
+// arguments: the StringBinaryTree object a record is being added to
+// returns: nothing
+void addRecord(StringBinaryTree&);
+
+// deleteRecord() prompts the user for a value, checks if that value is in the StringBinaryTree object, and removes the
+// record with that value from the StringBinaryTree object if it exists.
+// arguments: the StringBinaryTree object a record is being removed from
+// returns: nothing
+void deleteRecord(StringBinaryTree&);
+
+// searchForRecord() prompts the user for a value, checks if that value is in the StringBinaryTree object, and displays
+// a message letting the user know whether the value was found.
+// arguments: the StringBinaryTree object being searched
+// returns: nothing
+void searchForRecord(const StringBinaryTree&);
+
+// modifyRecord() prompts the user for a value, checks if that value is in the StringBinaryTree object, prompts the user
+// for a new value for the record, and updates the value of the record.
+// arguments: the StringBinaryTree object where a record is being modified
+// returns: nothing
+void modifyRecord(StringBinaryTree&);
+
 int main() {
 	StringBinaryTree tree;
 	ifstream infile;
