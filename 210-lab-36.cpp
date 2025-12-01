@@ -39,7 +39,7 @@ void deleteRecord(StringBinaryTree&);
 // a message letting the user know whether the value was found.
 // arguments: the StringBinaryTree object being searched
 // returns: nothing
-void searchForRecord(const StringBinaryTree&);
+void searchForRecord(StringBinaryTree&);
 
 // modifyRecord() prompts the user for a value, checks if that value is in the StringBinaryTree object, prompts the user
 // for a new value for the record, and updates the value of the record.
@@ -72,30 +72,28 @@ int main() {
 		choice = menu();
 		switch (choice) {
 			case 1:
-				// ADD
+				addRecord(tree);
 				break;
 			case 2:
-				// DELETE
+				deleteRecord(tree);
 				break;
 			case 3:
-				// SEARCH
+				searchForRecord(tree);
 				break;
 			case 4:
-				// MODIFY
+				modifyRecord(tree);
 				break;
-			case 5: {
+			case 5:
 				tree.displayInOrder();
 				break;
-			}
-			case 6: {
+			case 6:
 				displayMenu = false;
-			}
+				break;
 			// Default case will not occur since the menu() function validates user input
 			default:
 				break;
 		}
 	}
-
 
 	return 0;
 }
@@ -140,4 +138,50 @@ int menu() {
 	}
 
 	return choice;
+}
+
+void addRecord(StringBinaryTree &tree) {
+	string input;
+	cout << "Enter the value of the new record:" << endl;
+	cin >> input;
+	tree.insertNode(input);
+}
+
+void deleteRecord(StringBinaryTree &tree) {
+	string input;
+	cout << "Enter the value of the record to delete:" << endl;
+	cin >> input;
+	bool found = tree.searchNode(input);
+	if (found) {
+		tree.remove(input);
+		cout << "Deleted the record with the value " << input << endl;
+	} else
+		cout << "Record not found." << endl;
+}
+
+void searchForRecord(StringBinaryTree &tree) {
+	string input;
+	cout << "Enter the value of the record to search for:" << endl;
+	cin >> input;
+	bool found = tree.searchNode(input);
+	cout << "The record with the value " << input;
+	if (found)
+		cout << " was found." << endl;
+	else
+		cout << " was not found." << endl;
+}
+
+void modifyRecord(StringBinaryTree &tree) {
+	string input;
+	cout << "Enter the value of the record to modify:" << endl;
+	cin >> input;
+	bool found = tree.searchNode(input);
+	if (found) {
+		tree.remove(input);
+		cout << "Enter the new value of the record:" << endl;
+		cin >> input;
+		tree.insertNode(input);
+
+	} else
+		cout << "Record not found." << endl;
 }
