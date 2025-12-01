@@ -17,6 +17,12 @@ using namespace std;
 // returns: nothing
 void testBinaryTree();
 
+// menu() displays the menu options for adding, deleting, searching, and modifying records, validates the user's choice,
+// and returns the user's choice as an int.
+// arguments: none
+// returns: an int value representing the user's menu choice
+int menu();
+
 int main() {
 	StringBinaryTree tree;
 	ifstream infile;
@@ -56,4 +62,21 @@ void testBinaryTree() {
 	cout << "Displaying the updated tree..." << endl;
 	tree.displayInOrder();
 	cout << endl;
+}
+
+int menu() {
+	int choice;
+
+	cout << "Make a selection:" << endl;
+	cout << "1. Add a record" << endl;
+	cout << "2. Delete a record" << endl;
+	cout << "3. Search for a record" << endl;
+	cout << "4. Modify a record" << endl;
+	cout << "5. Display all records" << endl;
+	cout << "6. Exit" << endl;
+	while (!(cin >> choice)) {
+		cout << "Invalid input. Please enter a number." << endl;
+	}
+
+	return choice;
 }
