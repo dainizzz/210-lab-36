@@ -8,10 +8,6 @@
 
 using namespace std;
 
-/* Milestones (Remove when done)
- * 4. Your code's menu is functional.
-*/
-
 // testBinaryTree() tests the StringBinaryTree class by creating a new object of that class and
 // calling some of its methods.
 // arguments: none
@@ -54,19 +50,23 @@ int main() {
 	int choice;
 	bool displayMenu = true;
 
-	// cout << "Loading initial record data..." << endl;
-	//
-	// infile.open("codes.txt");
-	// if (infile.good()) {
-	// 	while (infile >> temp) {
-	// 		tree.insertNode(temp);
-	// 	}
-	// } else
-	// 	cout << "Error opening file." << endl;
-	//
-	// cout << "Displaying initial record data..." << endl;
-	// tree.displayInOrder();
-	// cout << endl << endl;
+	cout << "Welcome to the Record Management Program!" << endl << endl;
+
+	cout << "Loading initial record data..." << endl;
+	infile.open("codes.txt");
+	if (infile.good()) {
+		while (infile >> temp) {
+			tree.insertNode(temp);
+		}
+		cout << "Data successfully loaded!" << endl << endl;
+	} else {
+		cout << "Error opening file." << endl;
+		exit(2);
+	}
+
+	cout << "Displaying initial record data..." << endl;
+	tree.displayInOrder();
+	cout << endl << endl;
 
 	while (displayMenu) {
 		choice = menu();
@@ -94,6 +94,8 @@ int main() {
 				break;
 		}
 	}
+
+	cout << "Thank you for using the Record Mangagement Program! Have a nice day!" << endl;
 
 	return 0;
 }
@@ -124,13 +126,13 @@ void testBinaryTree() {
 int menu() {
 	int choice;
 
-	cout << "Make a selection:" << endl;
-	cout << "1. Add a record" << endl;
-	cout << "2. Delete a record" << endl;
-	cout << "3. Search for a record" << endl;
-	cout << "4. Modify a record" << endl;
-	cout << "5. Display all records" << endl;
-	cout << "6. Exit" << endl;
+	cout << "Please make a selection:" << endl;
+	cout << "\t1. Add a record" << endl;
+	cout << "\t2. Delete a record" << endl;
+	cout << "\t3. Search for a record" << endl;
+	cout << "\t4. Modify a record" << endl;
+	cout << "\t5. Display all records" << endl;
+	cout << "\t6. Exit" << endl;
 	while (!(cin >> choice) || choice < 1 || choice > 6) {
 		cout << "Invalid input. Please enter a number between 1 and 6." << endl;
 		cin.clear();
