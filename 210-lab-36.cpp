@@ -12,7 +12,18 @@ using namespace std;
 */
 
 int main() {
-    
+    IntBinaryTree tree;
+
+	cout << "Inserting nodes into tree..." << endl;
+	tree.insertNode("apple");
+	tree.insertNode("banana");
+	tree.insertNode("cherry");
+	tree.insertNode("dragonfruit");
+
+	cout << "Displaying the values in the tree..." << endl;
+	tree.displayInOrder();
+	tree.displayPostOrder();
+	tree.displayPreOrder();
 
     return 0;
 }
