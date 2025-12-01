@@ -154,6 +154,8 @@ void deleteRecord(StringBinaryTree &tree) {
 	string input;
 	cout << "Enter the value of the record to delete:" << endl;
 	cin >> input;
+	// Calling the remove() method with an argument of a value that is not in the StringBinaryTree object causes an
+	// error, so we need to first check that the value exists.
 	bool found = tree.searchNode(input);
 	if (found) {
 		tree.remove(input);
@@ -178,6 +180,8 @@ void modifyRecord(StringBinaryTree &tree) {
 	string input;
 	cout << "Enter the value of the record to modify:" << endl;
 	cin >> input;
+	// Similarly to the deleteRecord() function, because this function calls remove(), we first need to check that
+	// the value exists in the StringBinaryTree object.
 	bool found = tree.searchNode(input);
 	if (found) {
 		// Rather than modifying the value directly, which could cause the BST to no longer be in order,
