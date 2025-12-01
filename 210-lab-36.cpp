@@ -145,6 +145,7 @@ void addRecord(StringBinaryTree &tree) {
 	cout << "Enter the value of the new record:" << endl;
 	cin >> input;
 	tree.insertNode(input);
+	cout << "New record successfully added!" << endl << endl;
 }
 
 void deleteRecord(StringBinaryTree &tree) {
@@ -154,9 +155,9 @@ void deleteRecord(StringBinaryTree &tree) {
 	bool found = tree.searchNode(input);
 	if (found) {
 		tree.remove(input);
-		cout << "Deleted the record with the value " << input << endl;
+		cout << "Deleted the record with the value \"" << input << "\"." << endl << endl;
 	} else
-		cout << "Record not found." << endl;
+		cout << "Record not found." << endl << endl;
 }
 
 void searchForRecord(StringBinaryTree &tree) {
@@ -164,11 +165,11 @@ void searchForRecord(StringBinaryTree &tree) {
 	cout << "Enter the value of the record to search for:" << endl;
 	cin >> input;
 	bool found = tree.searchNode(input);
-	cout << "The record with the value " << input;
+	cout << "The record with the value \"" << input;
 	if (found)
-		cout << " was found." << endl;
+		cout << "\" was found." << endl << endl;
 	else
-		cout << " was not found." << endl;
+		cout << "\" was not found." << endl << endl;
 }
 
 void modifyRecord(StringBinaryTree &tree) {
@@ -177,11 +178,14 @@ void modifyRecord(StringBinaryTree &tree) {
 	cin >> input;
 	bool found = tree.searchNode(input);
 	if (found) {
+		// Rather than modifying the value directly, which could cause the BST to no longer be in order,
+		// the record that should be modified is deleted, and a new record is added with the value the user provides.
+		// This will ensure that the order of the BST is maintained.
 		tree.remove(input);
 		cout << "Enter the new value of the record:" << endl;
 		cin >> input;
 		tree.insertNode(input);
-
+		cout << "The record was successfully modified!" << endl << endl;
 	} else
-		cout << "Record not found." << endl;
+		cout << "Record not found." << endl << endl;
 }
